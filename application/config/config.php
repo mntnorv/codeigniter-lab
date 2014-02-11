@@ -357,6 +357,19 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+|--------------------------------------------------------------------------
+| Autoload core controller classes
+|--------------------------------------------------------------------------
+*/
+
+function __autoload($class) {
+    if (strpos($class, 'CI_') !== 0) {
+        if (file_exists($file = APPPATH . 'core/' . $class . EXT)) {
+            include $file;
+        }
+    }
+}
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

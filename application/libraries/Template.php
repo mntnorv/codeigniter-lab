@@ -23,7 +23,7 @@ class Template {
 			 
 			$body = $this->ci->load->view($body_view_path, $data, TRUE);
 			 
-			if ( is_null($data)) {
+			if (is_null($data)) {
 				$data = array('body' => $body);
 			} else if (is_array($data)) {
 				$data['body'] = $body;
