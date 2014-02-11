@@ -8,6 +8,9 @@
 	<script type="text/javascript">
 		var BASE_URL = '<?= base_url() ?>';
 	</script>
+
+	<?= $stylesheets ?>
+	<?= $javascripts ?>
 </head>
 <body>
 	
