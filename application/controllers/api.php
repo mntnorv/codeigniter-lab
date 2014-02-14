@@ -13,13 +13,17 @@ class API extends Base_Controller {
 		$output = [];
 
 		if ($type == "") {
-			$output = $this->food_model->find_all();
+			$output = array(
+				"food" => $this->food_model->find_all()
+			);
 		} else {
 			$types = $this->food_type_model->find_by_name($type);
 
 			if (count($types) != 0) {
 				$type_id = $types[0]->id;
-				$output = $this->food_model->find_by_type($type_id);
+				$output = array(
+					"food" => $this->food_model->find_by_type($type_id)
+				);
 			} else {
 				$output['error'] = 'no such food type';
 			}
