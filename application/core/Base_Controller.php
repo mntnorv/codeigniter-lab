@@ -8,7 +8,7 @@ class Base_Controller extends CI_Controller {
 	);
 
 	protected $javascripts = array(
-		'app.js'
+		'libs/handlebars-v1.3.0.js', 'app.js'
 	);
 
 	protected $local_stylesheets = array();
