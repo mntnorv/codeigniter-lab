@@ -1,0 +1,16 @@
+{{#each food}}
+	<div class="col-sm-4">
+		<div class="food-item" data-food="{{id}}">
+			<img
+				class="food-item-image"
+				src="assets/default_food.jpg"
+			/>
+			<div class="food-item-name">
+				{{name}}
+				<button class="btn btn-success btn-xs pull-right">
+					{{price}} Lt
+				</button>
+			</div>
+		</div>
+	</div>
+{{/each}}
