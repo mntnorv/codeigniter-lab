@@ -10,6 +10,7 @@
 	</script>
 
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
 	<?= $stylesheets ?>
 
 	<?= jquery('1.10.1') ?>

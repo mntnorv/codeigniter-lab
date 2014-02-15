@@ -2,6 +2,10 @@
 
 class Cart extends Base_Controller {
 
+	protected $local_stylesheets = array(
+		"cart.css"
+	);
+
 	public function index() {
 		$cart_items = [];
 		$food_items = [];
