@@ -69,7 +69,7 @@ class Base_Controller extends CI_Controller {
 		return $js_string;
 	}
 
-	private function get_cart_contents() {
+	protected function get_cart_contents() {
 		if ($this->cart_contents == null) {
 			if ($this->session->userdata('cart_order_id') != NULL) {
 				$this->cart_contents = $this->order_food_model->find_by_order_id(
@@ -83,7 +83,7 @@ class Base_Controller extends CI_Controller {
 		return $this->cart_contents;
 	}
 
-	private function count_cart_items($cart_items) {
+	protected function count_cart_items($cart_items) {
 		$cart_size = 0;
 
 		foreach ($cart_items as $item) {
