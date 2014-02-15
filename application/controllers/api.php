@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class API extends Base_Controller {
+class API extends API_Controller {
 
 	public function food($type = "") {
 		$output = [];
@@ -93,15 +93,6 @@ class API extends Base_Controller {
 				"food_id"  => $food_id
 			);
 			$this->order_food_model->insert($order_food);
-		}
-
-		// Increment the cart size
-		if ($this->session->userdata('cart_size')) {
-			$this->session->set_userdata('cart_size',
-				$this->session->userdata('cart_size') + 1
-			);
-		} else {
-			$this->session->set_userdata('cart_size', 1);
 		}
 
 		// Update the order price

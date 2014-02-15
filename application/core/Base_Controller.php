@@ -15,11 +15,15 @@ class Base_Controller extends CI_Controller {
 	protected $local_stylesheets = array();
 	protected $local_javascripts = array();
 
+	private $cart_contents;
+
 	public function __construct() {
 		parent::__construct();
 
 		$this->load->database();
 		$this->load->library("session");
+
+		$this->cart_contents = null;
 	}
 
 	protected function render($content, $additional_data = []) {
@@ -31,7 +35,7 @@ class Base_Controller extends CI_Controller {
 			// User data
 			"logged_in"     => $this->session->userdata('logged_in'),
 			"user_data"     => $this->session->all_userdata(),
-			"cart_size"     => $this->get_cart_size(),
+			"cart_size"     => $this->count_cart_items($this->get_cart_contents()),
 
 			// Alerts
 			"alert_error"   => $this->session->flashdata('error'),
@@ -41,22 +45,6 @@ class Base_Controller extends CI_Controller {
 
 		$data = array_merge($base_data, $additional_data);
 		$this->template->load($this->layout, $content, $data);
-	}
-
-	protected function json_error($error_string) {
-		$this->output
-			->set_content_type('application/json')
-			->set_output(json_encode(array(
-				'error' => $error_string
-			)));
-	}
-
-	protected function json_success($success_string) {
-		$this->output
-			->set_content_type('application/json')
-			->set_output(json_encode(array(
-				'success' => $success_string
-			)));
 	}
 
 	protected function get_stylesheets() {
@@ -81,11 +69,25 @@ class Base_Controller extends CI_Controller {
 		return $js_string;
 	}
 
-	private function get_cart_size() {
+	private function get_cart_contents() {
+		if ($this->cart_contents == null) {
+			if ($this->session->userdata('cart_order_id') != NULL) {
+				$this->cart_contents = $this->order_food_model->find_by_order_id(
+					$this->session->userdata('cart_order_id')
+				);
+			} else {
+				$this->cart_contents = [];
+			}
+		}
+
+		return $this->cart_contents;
+	}
+
+	private function count_cart_items($cart_items) {
 		$cart_size = 0;
 
-		if ($this->session->userdata('cart_size')) {
-			$cart_size = $this->session->userdata('cart_size');
+		foreach ($cart_items as $item) {
+			$cart_size += $item->amount;
 		}
 
 		return $cart_size;
