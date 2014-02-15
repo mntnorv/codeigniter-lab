@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="col-md-3">
 		<ul class="category-list">
-			<li><a href="#">Visi</a></li>
+			<li><a href="#">Everything</a></li>
 
 			<?php foreach ($food_types as $food_type): ?>
 				<li data-food-type="<?= $food_type->name ?>">

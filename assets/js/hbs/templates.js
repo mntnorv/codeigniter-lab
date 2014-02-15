@@ -16,11 +16,11 @@ function program1(depth0,data) {
   if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\r\n				<button class=\"btn btn-success btn-xs pull-right\">\r\n					";
+    + "\r\n				<button class=\"btn btn-success btn-xs pull-right\">\r\n					$";
   if (helper = helpers.price) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.price); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + " Lt\r\n				</button>\r\n			</div>\r\n		</div>\r\n	</div>\r\n";
+    + "\r\n				</button>\r\n			</div>\r\n		</div>\r\n	</div>\r\n";
   return buffer;
   }
 

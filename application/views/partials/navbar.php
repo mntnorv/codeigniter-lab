@@ -14,7 +14,7 @@
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="{{route('cart')}}">
-					Krepšelis (<span id="cart-size">0</span>)
+					Cart (<span id="cart-size">0</span>)
 				</a></li>
 			</ul>
 		</div>

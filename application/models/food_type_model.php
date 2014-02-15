@@ -9,25 +9,25 @@ class Food_Type_Model extends Base_Model {
 		$this->insert(array(
 			'id' => 1,
 			'name' => 'pizza',
-			'display_name' => 'Picos'
+			'display_name' => 'Pizza'
 		));
 
 		$this->insert(array(
 			'id' => 2,
 			'name' => 'steaks',
-			'display_name' => 'Kepsniai'
+			'display_name' => 'Steaks'
 		));
 
 		$this->insert(array(
 			'id' => 3,
 			'name' => 'snacks',
-			'display_name' => 'Užkandžiai'
+			'display_name' => 'Snacks'
 		));
 		
 		$this->insert(array(
 			'id' => 4,
 			'name' => 'drinks',
-			'display_name' => 'Gėrimai'
+			'display_name' => 'Drinks'
 		));
 	}
 }
