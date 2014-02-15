@@ -1,0 +1,27 @@
+.tooltip.top .tooltip-arrow {
+	border-top-color: #EBCCD1;
+}
+
+.tooltip.left .tooltip-arrow {
+	border-left-color: #EBCCD1;
+}
+
+.tooltip.bottom .tooltip-arrow {
+	border-bottom-color: #EBCCD1;
+}
+
+.tooltip.right .tooltip-arrow {
+	border-right-color: #EBCCD1;
+}
+
+.tooltip-inner {
+	background-color: #F2DEDE;
+	color: #A94442;
+	padding: 8px;
+	border: solid 1px #EBCCD1;
+	max-width: 300px;
+}
+
+.tooltip.in {
+	opacity: 1;
+}

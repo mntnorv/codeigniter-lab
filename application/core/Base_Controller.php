@@ -4,11 +4,12 @@ class Base_Controller extends CI_Controller {
 	protected $layout = 'application';
 
 	protected $stylesheets = array(
-		'app.css'
+		'tooltips.css', 'app.css'
 	);
 
 	protected $javascripts = array(
-		'libs/handlebars.runtime-v1.3.0.js', 'hbs/templates.js', 'app.js'
+		'libs/handlebars.runtime-v1.3.0.js', 'hbs/templates.js', 'tooltips.js',
+		'app.js'
 	);
 
 	protected $local_stylesheets = array();
