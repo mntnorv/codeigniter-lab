@@ -2,6 +2,24 @@ body {
 	margin-top: 50px;
 }
 
+tfoot {
+	font-weight: bold;
+	border-top: 2px solid rgb(221, 221, 221);
+}
+
+textarea.form-control {
+	resize: none;
+	height: 90px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.align-right {
+	text-align: right;
+}
+
 .footer {
 	color: #999;
 }

@@ -15,10 +15,13 @@ class Base_Controller extends CI_Controller {
 	protected $local_javascripts = array();
 
 	protected function render($content, $data = []) {
-		$data["stylesheets"] = $this->get_stylesheets();
-		$data["javascripts"] = $this->get_javascripts();
+		$assets = array(
+			"stylesheets" => $this->get_stylesheets(),
+			"javascripts" => $this->get_javascripts()
+		);
 
-		$this->template->load($this->layout, $content, $data);
+		$final_data = array_merge($assets, $data);
+		$this->template->load($this->layout, $content, $final_data);
 	}
 
 	protected function get_stylesheets() {
