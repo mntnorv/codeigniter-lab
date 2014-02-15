@@ -13,9 +13,22 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="{{route('cart')}}">
+				<li><a href="<?=base_url('/cart')?>">
 					Cart (<span id="cart-size">0</span>)
 				</a></li>
+
+				<?php if ($logged_in): ?>
+					<li><a href="<?=base_url('/user/logout')?>">
+						Logout (<?= $user_data['username'] ?>)
+					</a></li>
+				<?php else: ?>
+					<li><a href="<?=base_url('/user/login')?>">
+						Login
+					</a></li>
+					<li><a href="<?=base_url('/user/register')?>">
+						Register
+					</a></li>
+				<?php endif ?>
 			</ul>
 		</div>
 	</div>

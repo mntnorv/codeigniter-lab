@@ -8,6 +8,7 @@ class Migration_Users extends CI_Migration {
 		$this->dbforge->add_field("type int(11) unsigned NOT NULL");
 
 		$this->dbforge->add_key('id', TRUE);
+		$this->dbforge->add_key('username');
 	
 		$this->dbforge->create_table('users', TRUE);
 	}
