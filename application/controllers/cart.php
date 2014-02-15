@@ -7,15 +7,12 @@ class Cart extends Base_Controller {
 	);
 
 	public function index() {
-		$cart_items = [];
+		$cart_items = $this->get_cart_contents();
 		$food_items = [];
 		$total_price = 0;
 
 		if ($this->session->userdata('cart_order_id') != FALSE) {
 			$cart_order_id = $this->session->userdata('cart_order_id');
-
-			$cart_items = $this->order_food_model->find_by_order_id($cart_order_id);
-
 			$total_price = $this->order_model->find($cart_order_id)[0]->final_price;
 		}
 

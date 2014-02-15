@@ -97,7 +97,7 @@ class CI_DB_forge {
 	 */
 	function add_key($key = '', $primary = FALSE)
 	{
-		if (is_array($key))
+		if (is_array($key) && $primary === TRUE)
 		{
 			foreach ($key as $one)
 			{
