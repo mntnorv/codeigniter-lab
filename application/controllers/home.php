@@ -6,10 +6,13 @@ class Home extends Base_Controller {
 		"home.css"
 	);
 
+	protected $local_javascripts = array(
+		"home.js"
+	);
+
 	function __construct() {
 		parent::__construct();
 		$this->load->database();
-		$this->load->model('food_type_model');
 	}
 
 	public function index() {

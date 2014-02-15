@@ -12,7 +12,7 @@ function program1(depth0,data) {
   if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\">\r\n			<img\r\n				class=\"food-item-image\"\r\n				src=\"assets/default_food.jpg\"\r\n			/>\r\n			<div class=\"food-item-name\">\r\n				";
+    + "\">\r\n			<img\r\n				class=\"food-item-image\"\r\n				src=\"assets/img/default_food.jpg\"\r\n			/>\r\n			<div class=\"food-item-name\">\r\n				";
   if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
