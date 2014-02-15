@@ -19,6 +19,7 @@
 <body>
 	
 	<?php $this->load->view('partials/navbar'); ?>
+	<?php $this->load->view('partials/messages'); ?>
 
 	<?php echo $body; ?>
 

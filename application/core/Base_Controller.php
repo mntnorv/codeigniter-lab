@@ -4,12 +4,12 @@ class Base_Controller extends CI_Controller {
 	protected $layout = 'application';
 
 	protected $stylesheets = array(
-		'tooltips.css', 'app.css'
+		'tooltips.css', 'alerts.css', 'app.css'
 	);
 
 	protected $javascripts = array(
 		'libs/handlebars.runtime-v1.3.0.js', 'hbs/templates.js', 'tooltips.js',
-		'app.js'
+		'alerts.js', 'app.js'
 	);
 
 	protected $local_stylesheets = array();
@@ -22,14 +22,24 @@ class Base_Controller extends CI_Controller {
 		$this->load->library("session");
 	}
 
-	protected function render($content, $data = []) {
-		$assets = array(
-			"stylesheets" => $this->get_stylesheets(),
-			"javascripts" => $this->get_javascripts()
+	protected function render($content, $additional_data = []) {
+		$base_data = array(
+			// Assets
+			"stylesheets"   => $this->get_stylesheets(),
+			"javascripts"   => $this->get_javascripts(),
+
+			// User data
+			"logged_in"     => $this->session->userdata('logged_in'),
+			"user_data"     => $this->session->all_userdata(),
+
+			// Alerts
+			"alert_error"   => $this->session->flashdata('error'),
+			"alert_info"    => $this->session->flashdata('info'),
+			"alert_success" => $this->session->flashdata('success')
 		);
 
-		$final_data = array_merge($assets, $data);
-		$this->template->load($this->layout, $content, $final_data);
+		$data = array_merge($base_data, $additional_data);
+		$this->template->load($this->layout, $content, $data);
 	}
 
 	protected function get_stylesheets() {
