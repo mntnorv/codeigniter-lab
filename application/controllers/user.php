@@ -18,6 +18,11 @@ class User extends Base_Controller {
 		}
 	}
 
+	public function logout() {
+		$this->session->sess_destroy();
+		redirect('/');
+	}
+
 	private function show_login() {
 		$this->render('login');
 	}
