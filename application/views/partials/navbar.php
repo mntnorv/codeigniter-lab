@@ -25,9 +25,6 @@
 					<li><a href="<?=base_url('/user/login')?>">
 						Login
 					</a></li>
-					<li><a href="<?=base_url('/user/register')?>">
-						Register
-					</a></li>
 				<?php endif ?>
 			</ul>
 		</div>
