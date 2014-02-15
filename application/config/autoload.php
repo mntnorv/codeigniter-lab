@@ -117,6 +117,8 @@ $autoload['language'] = array();
 */
 
 $autoload['model'] = array(
+	'user_type_model',
+	'user_model',
 	'food_model',
 	'food_type_model'
 );

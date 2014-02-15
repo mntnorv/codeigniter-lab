@@ -4,6 +4,8 @@ class Food_Model extends Base_Model {
 	protected $_table = "food";
 
 	public function seed() {
+		$this->db->truncate($this->_table);
+		
 		$this->insert(array(
 			'name'  => 'Capricioza',
 			'type'  => 1,

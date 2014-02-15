@@ -18,6 +18,8 @@ class Migrate extends CI_Controller {
 	}
 
 	public function seed() {
+		$this->user_type_model->seed();
+		$this->user_model->seed();
 		$this->food_type_model->seed();
 		$this->food_model->seed();
 	}
