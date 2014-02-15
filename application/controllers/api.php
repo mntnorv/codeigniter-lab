@@ -30,27 +30,26 @@ class API extends Base_Controller {
 	public function cart() {
 		$method = $this->input->server('REQUEST_METHOD');
 
-		if ($method == 'GET') {
-			$this->get_cart_contents();
-		} else if ($method == 'POST') {
+		if ($method == 'POST') {
 			$this->add_to_cart();
+		} else {
+			$this->json_error('METHOD_NOT_ALLOWED');
 		}
-	}
-
-	private function get_cart_contents() {
-
 	}
 
 	private function add_to_cart() {
 		$output = [];
 
+		// Check for required POST inputs
 		if ($this->input->post('food_id') == FALSE) {
 			$this->json_error('INVALID_REQUEST');
 			return;
 		}
 
+		// Get variables from input
 		$food_id = $this->input->post('food_id');
 
+		// Get the cart order
 		$order = null;
 		if ($this->session->userdata('cart_order_id') == FALSE) {
 			$order = new stdClass();
@@ -66,6 +65,7 @@ class API extends Base_Controller {
 			)[0];
 		}
 
+		// Get the food to be added to the cart
 		$food = $this->food_model->find($food_id);
 		if (count($food) == 0) {
 			$this->json_error('INVALID_FOOD_ID');
@@ -74,16 +74,19 @@ class API extends Base_Controller {
 			$food = $food[0];
 		}
 
+		// Check if the food is already in the cart
 		$order_food = $this->order_food_model->find_where(array(
 			'order_id' => $order->id,
 			'food_id'  => $food_id
 		));
 
 		if (count($order_food) > 0) {
+			// Increment the amount if food already in the cart
 			$order_food = $order_food[0];
 			$order_food->amount++;
 			$this->order_food_model->save($order_food);
 		} else {
+			// Add a new order_food row, if the food is not already in the cart
 			$order_food = array(
 				"amount"   => 1,
 				"order_id" => $order->id,
@@ -92,6 +95,16 @@ class API extends Base_Controller {
 			$this->order_food_model->insert($order_food);
 		}
 
+		// Increment the cart size
+		if ($this->session->userdata('cart_size')) {
+			$this->session->set_userdata('cart_size',
+				$this->session->userdata('cart_size') + 1
+			);
+		} else {
+			$this->session->set_userdata('cart_size', 1);
+		}
+
+		// Update the order price
 		$order->final_price += $food->price;
 		$this->order_model->save($order);
 

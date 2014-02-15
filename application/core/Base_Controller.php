@@ -31,6 +31,7 @@ class Base_Controller extends CI_Controller {
 			// User data
 			"logged_in"     => $this->session->userdata('logged_in'),
 			"user_data"     => $this->session->all_userdata(),
+			"cart_size"     => $this->get_cart_size(),
 
 			// Alerts
 			"alert_error"   => $this->session->flashdata('error'),
@@ -78,5 +79,15 @@ class Base_Controller extends CI_Controller {
 		}
 
 		return $js_string;
+	}
+
+	private function get_cart_size() {
+		$cart_size = 0;
+
+		if ($this->session->userdata('cart_size')) {
+			$cart_size = $this->session->userdata('cart_size');
+		}
+
+		return $cart_size;
 	}
 }

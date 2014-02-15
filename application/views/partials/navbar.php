@@ -14,7 +14,7 @@
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="<?=base_url('/cart')?>">
-					Cart (<span id="cart-size">0</span>)
+					Cart (<span id="cart-size"><?= $cart_size ?></span>)
 				</a></li>
 
 				<?php if ($logged_in): ?>
