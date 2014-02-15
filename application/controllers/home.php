@@ -10,13 +10,6 @@ class Home extends Base_Controller {
 		"home.js"
 	);
 
-	function __construct() {
-		parent::__construct();
-
-		$this->load->database();
-		$this->load->library("session");
-	}
-
 	public function index() {
 		$data = array(
 			"food_types" => $this->food_type_model->find_all()

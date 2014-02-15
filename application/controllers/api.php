@@ -2,11 +2,6 @@
 
 class API extends Base_Controller {
 
-	function __construct() {
-		parent::__construct();
-		$this->load->database();
-	}
-
 	public function food($type = "") {
 		$output = [];
 

@@ -14,6 +14,13 @@ class Base_Controller extends CI_Controller {
 	protected $local_stylesheets = array();
 	protected $local_javascripts = array();
 
+	public function __construct() {
+		parent::__construct();
+
+		$this->load->database();
+		$this->load->library("session");
+	}
+
 	protected function render($content, $data = []) {
 		$assets = array(
 			"stylesheets" => $this->get_stylesheets(),
