@@ -22,5 +22,8 @@ class Migrate extends CI_Controller {
 		$this->user_model->seed();
 		$this->food_type_model->seed();
 		$this->food_model->seed();
+		$this->city_model->seed();
+		$this->order_state_model->seed();
+		$this->order_model->seed();
 	}
 }

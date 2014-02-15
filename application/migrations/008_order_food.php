@@ -9,10 +9,10 @@ class Migration_Order_Food extends CI_Migration {
 
 		$this->dbforge->add_key('id', TRUE);
 	
-		$this->dbforge->create_table('order_states', TRUE);
+		$this->dbforge->create_table('order_food', TRUE);
 	}
 
 	public function down(){
-		$this->dbforge->drop_table('order_states');
+		$this->dbforge->drop_table('order_food');
 	}
 }

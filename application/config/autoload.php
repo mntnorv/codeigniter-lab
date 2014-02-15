@@ -121,7 +121,10 @@ $autoload['model'] = array(
 	'user_type_model',
 	'user_model',
 	'food_model',
-	'food_type_model'
+	'food_type_model',
+	'city_model',
+	'order_state_model',
+	'order_model'
 );
 
 
