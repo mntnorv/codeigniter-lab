@@ -42,6 +42,22 @@ class Base_Controller extends CI_Controller {
 		$this->template->load($this->layout, $content, $data);
 	}
 
+	protected function json_error($error_string) {
+		$this->output
+			->set_content_type('application/json')
+			->set_output(json_encode(array(
+				'error' => $error_string
+			)));
+	}
+
+	protected function json_success($success_string) {
+		$this->output
+			->set_content_type('application/json')
+			->set_output(json_encode(array(
+				'success' => $success_string
+			)));
+	}
+
 	protected function get_stylesheets() {
 		$styles = array_merge($this->stylesheets, $this->local_stylesheets);
 		$style_string = "";

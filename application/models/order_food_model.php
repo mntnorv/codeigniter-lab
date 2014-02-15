@@ -1,6 +1,6 @@
 <?php
 
-class Order_Model extends Base_Model {
+class Order_Food_Model extends Base_Model {
 	protected $_table = "order_food";
 
 	public function seed() {
