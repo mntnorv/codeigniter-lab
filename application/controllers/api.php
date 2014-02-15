@@ -5,8 +5,6 @@ class API extends Base_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->database();
-		$this->load->model('food_model');
-		$this->load->model('food_type_model');
 	}
 
 	public function food($type = "") {

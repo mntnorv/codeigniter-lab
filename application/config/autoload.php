@@ -116,7 +116,10 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array(
+	'food_model',
+	'food_type_model'
+);
 
 
 /* End of file autoload.php */
