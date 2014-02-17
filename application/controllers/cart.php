@@ -6,6 +6,10 @@ class Cart extends Base_Controller {
 		"cart.css"
 	);
 
+	protected $local_javascripts = array(
+		"cart.js"
+	);
+
 	public function index() {
 		$cart_items = $this->get_cart_contents();
 		$food_items = [];

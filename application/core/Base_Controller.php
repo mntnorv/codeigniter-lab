@@ -8,8 +8,8 @@ class Base_Controller extends CI_Controller {
 	);
 
 	protected $javascripts = array(
-		'libs/handlebars.runtime-v1.3.0.js', 'hbs/templates.js', 'tooltips.js',
-		'alerts.js', 'app.js'
+		'libs/handlebars.runtime-v1.3.0.js', 'libs/sprintf.js',
+		'hbs/templates.js', 'tooltips.js', 'alerts.js', 'app.js'
 	);
 
 	protected $local_stylesheets = array();

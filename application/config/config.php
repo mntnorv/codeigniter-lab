@@ -106,7 +106,7 @@ $config['enable_hooks'] = FALSE;
 | http://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'MY_';
+$config['subclass_prefix'] = 'Base_';
 
 
 /*
@@ -366,7 +366,7 @@ $config['proxy_ips'] = '';
 function __autoload($class) {
     if (strpos($class, 'CI_') !== 0) {
         if (file_exists($file = APPPATH . 'core/' . $class . EXT)) {
-            include $file;
+            include_once $file;
         }
     }
 }
