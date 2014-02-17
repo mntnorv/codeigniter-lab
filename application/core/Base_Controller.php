@@ -34,6 +34,7 @@ class Base_Controller extends CI_Controller {
 
 			// User data
 			"logged_in"     => $this->session->userdata('logged_in'),
+			"is_admin"      => $this->is_admin(),
 			"user_data"     => $this->session->all_userdata(),
 			"cart_size"     => $this->count_cart_items($this->get_cart_contents()),
 
@@ -91,5 +92,13 @@ class Base_Controller extends CI_Controller {
 		}
 
 		return $cart_size;
+	}
+
+	protected function is_admin() {
+		if ($this->session->userdata('user_type') != 1) {
+			return FALSE;
+		} else {
+			return TRUE;
+		}
 	}
 }

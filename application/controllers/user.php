@@ -42,7 +42,7 @@ class User extends Base_Controller {
 			$users = $this->user_model->find_by_username($username);
 
 			if (count($users) == 0) {
-				$this->session->set_flashdata('error', 'Incorrect username');
+				$this->session->set_flashdata('error', 'Incorrect username or password');
 				redirect('/user/login');
 			} else {
 				if (password_verify($password, $users[0]->password)) {

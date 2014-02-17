@@ -18,6 +18,12 @@
 				</a></li>
 
 				<?php if ($logged_in): ?>
+					<?php if ($is_admin): ?>
+						<li><a href="<?=base_url('/admin')?>">
+							Admin panel
+						</a></li>
+					<?php endif ?>
+
 					<li><a href="<?=base_url('/user/logout')?>">
 						Logout (<?= $user_data['username'] ?>)
 					</a></li>
