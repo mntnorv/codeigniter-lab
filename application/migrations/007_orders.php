@@ -9,6 +9,7 @@ class Migration_Orders extends CI_Migration {
 		$this->dbforge->add_field("flat_no varchar(16)");
 		$this->dbforge->add_field("door_code varchar(16)");
 		$this->dbforge->add_field("phone varchar(255)");
+		$this->dbforge->add_field("comment tinytext");
 		$this->dbforge->add_field("state int(11) unsigned NOT NULL");
 		$this->dbforge->add_field("final_price double unsigned NOT NULL");
 

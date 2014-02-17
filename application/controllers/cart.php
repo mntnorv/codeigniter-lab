@@ -38,4 +38,20 @@ class Cart extends Base_Controller {
 			'total_price' => $total_price
 		));
 	}
+
+	public function delivery() {
+		$order_id = $this->session->userdata('cart_order_id');
+		$order    = $this->order_model->find($order_id)[0];
+		$cities   = $this->city_model->find_all();
+
+		$cities_assoc = [];
+		foreach ($cities as $city) {
+			$cities_assoc[$city->id] = $city->name;
+		}
+
+		$this->render('delivery', array(
+			'order'  => $order,
+			'cities' => $cities_assoc
+		));
+	}
 }

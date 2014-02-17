@@ -7,7 +7,7 @@
 	<div class="row">
 		<!-- Login form-->
 		<div class="col-sm-6">
-			<?php $this->load->view('forms/login_form'); ?>
+			<?php $this->load->view('forms/login'); ?>
 		</div>
 	</div>
 </div>
