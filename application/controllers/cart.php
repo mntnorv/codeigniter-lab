@@ -18,24 +18,12 @@ class Cart extends Base_Controller {
 
 	public function index() {
 		$cart_items = $this->get_cart_contents();
-		$food_items = [];
+		$food_items = $this->get_food_items($cart_items);
 		$total_price = 0;
 
 		if ($this->session->userdata('cart_order_id') != FALSE) {
 			$cart_order_id = $this->session->userdata('cart_order_id');
 			$total_price = $this->order_model->find($cart_order_id)[0]->final_price;
-		}
-
-		if (count($cart_items) > 0) {
-			$cart_food_ids = [];
-			foreach ($cart_items as $item) {
-				array_push($cart_food_ids, $item->food_id);
-			}
-
-			$food = $this->food_model->find_by_id_list($cart_food_ids);
-			foreach ($food as $item) {
-				$food_items[$item->id] = $item;
-			}
 		}
 
 		$this->render('cart', array(
@@ -56,7 +44,30 @@ class Cart extends Base_Controller {
 	}
 
 	public function confirm() {
-		$this->render('confirm');
+		$cart_items = $this->get_cart_contents();
+		$food_items = $this->get_food_items($cart_items);
+		$order_id   = $this->session->userdata('cart_order_id');
+		$order      = $this->order_model->find($order_id)[0];
+		$city       = $this->city_model->find($order->city)[0];
+
+		$this->render('confirm', array(
+			'cart_items' => $cart_items,
+			'food_items' => $food_items,
+			'order'      => $order,
+			'city'       => $city
+		));
+	}
+
+	public function order() {
+		$order_id = $this->session->userdata('cart_order_id');
+		$order    = $this->order_model->find($order_id)[0];
+
+		$order->state = 2;
+		$this->order_model->save($order);
+
+		$this->session->unset_userdata('cart_order_id');
+		$this->session->set_flashdata('success', 'Successfully ordered');
+		redirect('/');
 	}
 
 	private function show_delivery() {
@@ -120,5 +131,23 @@ class Cart extends Base_Controller {
 			$this->order_model->save($order);
 			redirect('cart/confirm');
 		}
+	}
+
+	private function get_food_items($cart_items) {
+		$food_items = [];
+
+		if (count($cart_items) > 0) {
+			$cart_food_ids = [];
+			foreach ($cart_items as $item) {
+				array_push($cart_food_ids, $item->food_id);
+			}
+
+			$food = $this->food_model->find_by_id_list($cart_food_ids);
+			foreach ($food as $item) {
+				$food_items[$item->id] = $item;
+			}
+		}
+
+		return $food_items;
 	}
 }
