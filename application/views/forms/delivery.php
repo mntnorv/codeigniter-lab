@@ -18,6 +18,7 @@
 						'name'           => 'street',
 						'id'             => 'street',
 						'placeholder'    => 'Street',
+						'value'          => $order->street,
 						'class'          => 'form-control',
 						'data-toggle'    => 'tooltip',
 						'data-trigger'   => 'manual',
@@ -35,6 +36,7 @@
 						'name'           => 'building_no',
 						'id'             => 'building_no',
 						'placeholder'    => 'Building No.',
+						'value'          => $order->building_no,
 						'class'          => 'form-control',
 						'data-toggle'    => 'tooltip',
 						'data-trigger'   => 'manual',
@@ -52,6 +54,7 @@
 						'name'           => 'flat_no',
 						'id'             => 'flat_no',
 						'placeholder'    => 'Flat No.',
+						'value'          => $order->flat_no,
 						'class'          => 'form-control',
 						'data-toggle'    => 'tooltip',
 						'data-trigger'   => 'manual',
@@ -65,18 +68,19 @@
 		<div class="col-md-6">
 			<!-- Telephone number field -->
 			<div class="form-group">
-				<?= form_label('Phone No.:', 'tel_no', array('class' => 'col-md-4 control-label')) ?>
+				<?= form_label('Phone No.:', 'phone', array('class' => 'col-md-4 control-label')) ?>
 				<div class="col-md-8">
 					<?= form_input(array(
-						'name'           => 'tel_no',
-						'id'             => 'tel_no',
+						'name'           => 'phone',
+						'id'             => 'phone',
 						'placeholder'    => 'Phone No.',
+						'value'          => $order->phone,
 						'class'          => 'form-control',
 						'data-toggle'    => 'tooltip',
 						'data-trigger'   => 'manual',
 						'data-placement' => 'right',
 						'data-container' => 'body',
-						'title'          => form_error("tel_no")
+						'title'          => form_error("phone")
 					)) ?>
 				</div>
 			</div>
@@ -89,6 +93,7 @@
 						'name'           => 'door_code',
 						'id'             => 'door_code',
 						'placeholder'    => 'Door code',
+						'value'          => $order->door_code,
 						'class'          => 'form-control',
 						'data-toggle'    => 'tooltip',
 						'data-trigger'   => 'manual',
@@ -107,6 +112,7 @@
 						'name'           => 'comment',
 						'id'             => 'comment',
 						'placeholder'    => 'Comment',
+						'value'          => $order->comment,
 						'class'          => 'form-control',
 						'data-toggle'    => 'tooltip',
 						'data-trigger'   => 'manual',
